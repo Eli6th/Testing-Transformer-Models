@@ -5,15 +5,15 @@ import random
 
 # Hyperparameters:
 batch_size = 64
-block_size = 256
-max_iters = 5000
-eval_interval = 500
+block_size = 128
+max_iters = 1000
+eval_interval = 10
 learning_rate = 3e-4
 device = "cuda" if torch.cuda.is_available() else "cpu"
 eval_iters = 200
-n_embd = 384
+n_embd = 192
 n_head = 6
-n_layer = 6
+n_layer = 3
 dropout = 0.2
 # ==================
 
@@ -193,4 +193,4 @@ for iter in range(max_iters):
     optimizer.step()
 
 idx = torch.zeros((1, 1), dtype=torch.long, device=device)
-print(decode(m.generate(idx, max_new_tokens=500)[0].tolist()))
+print(decode(m.generate(idx, max_new_tokens=50000)[0].tolist()))
